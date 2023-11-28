@@ -48,11 +48,11 @@ class TaskQueue {
 setTimeout(() => {
     console.log(`Master process started. Process ID: ${process.pid}`);
 
-    const numWorkers = os.cpus().length;
+    const corLength = os.cpus().length;
     const taskQueue = new TaskQueue();
 
     //? Create worker threads
-    for (let i = 0; i < numWorkers; i++) {
+    for (let i = 0; i < corLength; i++) {
         const worker = new Worker('./workers/search.js');
         taskQueue.registerWorker(worker);
 
